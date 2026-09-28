@@ -1,0 +1,19 @@
+# ~/.config/mozc/
+# ---------------
+# For Debian, run:
+# $ sudo apt install ibus-mozc
+# Then, go to Settings -> Keybord -> Add Input Source
+# $ ibus write-cache && ibus restart  might be necessary to apply changes. 
+# Also, you can just log out and back in
+
+engines {
+  name : "mozc-jp"
+  longname : "Mozc"
+  layout : "default"
+  layout_variant : ""
+  layout_option : ""
+  rank : 80
+  symbol : "あ"
+  composition_mode : HIRAGANA
+}
+active_on_launch: True
