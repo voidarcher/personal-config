@@ -1,0 +1,20 @@
+OpenVPN HOWTO
+-------------
+
+1)  OpenVPN should already be installed on Slackware-current (the one
+    that will eventually become Slackware 15.1 or 16.0).
+
+2)  Download whatever config file you want from account.protonvpn.com/downloads.
+    Make sure it's a UDP, GNU/Linux option.
+
+3)  Set up:
+    
+    a) The proton directory in your openvpn directory
+    b) Your credentials file, which will hold your OpenVPN Proton
+       login and passphrase
+
+4)  In the VPN config file, modify:
+    
+    # auth-user-pass /path/to/credentials
+
+5) You might also have to comment out whatever is under "script-security 2"
