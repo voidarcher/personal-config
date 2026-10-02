@@ -21,3 +21,5 @@ OpenVPN HOWTO
 
 6)  Don't forget to 
     # chmod 600 /path/to/credentials
+
+7)  Download the vpn_start script, make it executable, and move it to /usr/local/bin
