@@ -17,4 +17,7 @@ OpenVPN HOWTO
     
     # auth-user-pass /path/to/credentials
 
-5) You might also have to comment out whatever is under "script-security 2"
+5)  You might also have to comment out whatever is under "script-security 2"
+
+6)  Don't forget to 
+    # chmod 600 /path/to/credentials
