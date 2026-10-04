@@ -1,6 +1,5 @@
 Slackware Stuff
 ---------------
-
 The best advice: pursue Slack.
 Do the Full Installation. Don’t install anything. Don’t do any weird 
 configurations. Just install Slackware, upgrade the system with slackpkg, 
@@ -77,4 +76,54 @@ Then, do the regular update process
 # slackpkg upgrade-all
 # slackpkg clean-system
 
+Installing a SlackBuild:
+------------------------
+Download the SlackBuild tarball to your ~/SlackBuilds
+directory. Unpack it:
 
+$ tar xvf fastfetch.tar.gz (Just using fastfetch as an example)
+
+Then, cd into the created directory. Then, download the source code
+from the SlackBuilds page. Tbh I've just done this graphically instead
+of using wget.
+
+Anyway, now you should have everything you need in your ~/SlackBuilds/fastfetch
+directory. cd into it and run:
+
+$ su -l (You'll need a proper login shell)
+
+As root, install the SlackBuild:
+
+# chmod +x fastfetch.SlackBuild 
+# ./fastfetch.SlackBuild
+
+Now, there should be an installable tarball in /tmp. Go there and:
+
+[In /tmp]
+# installpkg fastfetch-x-y-z.txz
+
+Aaaaand you're done!
+
+Now, remove the stuff in /tmp you no longer need:
+
+[In /tmp]
+# rm -r Sbo
+# rm fastfech-x-y-z.txz
+
+I don't know how old you are when you're reading this again, but I'm sure you can
+remember/figure out how to delete old files. Basically, there's a package record in
+/var/log/packages/. Grep it to find the name of the package you're trying to uninstall.
+Then, just run removepkg:
+
+# removepkg fastfetch-2.66.1-x86_64-1_SBo
+
+Then, you'll have to remove any config files in ~/ yourself. Hopefully, you already
+removed the stuff in /tmp, but if not, check there too.
+
+For upgrading, it's just the installation process, but you run
+
+# upgradepkg fastfetch-x-y-z.txz 
+
+instead of installpkg.
+
+Good luck, Slacker.
