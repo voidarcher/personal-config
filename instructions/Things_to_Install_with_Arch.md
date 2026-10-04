@@ -75,6 +75,8 @@ sort-key 02
 $ sudo pacman -Syu fastfetch
 ```
 
+## Diary ##
+
 ### Written on Sunday, October 4, 2026
 I don't know why I don't love Arch the way I used to. Maybe I've hit the point
 where normal stuff just doesn't hit anymore, and anything familiar just feels
