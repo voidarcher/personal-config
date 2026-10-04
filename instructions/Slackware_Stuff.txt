@@ -44,6 +44,10 @@ Then, add this to /etc/default/grub:
 
 GRUB_BACKGROUND="/boot/grub/themes/floating_gnu_grub_background.png"
 
+Then, rerun:
+
+# grub-mkconfig -o /boot/grub/grub.cfg
+
 Creating a user:
 ----------------
 (As root user once you've rebooted into your system)
