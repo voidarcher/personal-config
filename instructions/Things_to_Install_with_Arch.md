@@ -1,5 +1,4 @@
-# Things to install with Arch:
-----------------------------
+# Things to install with Arch
 #### Pacstrap: 
 ```sh
 pacstrap -K /mnt base base-devel linux-lts linux-lts-headers linux-firmware sof-firmware networkmanager reflector fwupd vim git intel/amd-ucode 
