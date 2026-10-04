@@ -1,0 +1,80 @@
+Slackware Stuff
+---------------
+
+The best advice: pursue Slack.
+Do the Full Installation. Don’t install anything. Don’t do any weird 
+configurations. Just install Slackware, upgrade the system with slackpkg, 
+customize KDE, make your config files, and forget about it. Check the 
+changelog every night, and slackpkg up* when you need to. If something 
+doesn’t upgrade with slackpkg, just don’t worry about it. Actually be a 
+Slacker about things and pursue Slack.
+
+Remember that Pat Volkerding won't be around forever, and probably
+neither will this distribution. You have a limited time on Earth to be a
+Slacker, so make it good.
+
+Installing GRUB instead of ELILO:
+---------------------------------
+Skip installing LILO and ELILO
+Finish the installation
+Go into "Shell" instead of "Reboot"
+
+First, chroot into the new system
+
+# chroot /mnt /bin/bash
+
+Then, source profile
+
+# source /etc/profile
+
+Then, actually install GRUB
+
+# grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=Slackware
+
+Then, create the GRUB configuration file
+
+# grub-mkconfig -o /boot/grub/grub.cfg
+
+For setting a background, you move the file into
+
+/boot/grub/themes/floating_gnu_grub_background.png
+
+(Really gotta shorten that name)
+
+Then, add this to /etc/default/grub:
+
+GRUB_BACKGROUND="/boot/grub/themes/floating_gnu_grub_background.png"
+
+Creating a user:
+----------------
+(As root user once you've rebooted into your system)
+
+# useradd -m -g users -G 
+    wheel,floppy,audio,video,cdrom,plugdev,power,netdev,lp,scanner 
+    -s /bin/bash username
+
+# passwd username
+
+Go into /etc/inittab and set runlevel from 3 to 4
+
+
+Setting up Slackpkg:
+--------------------
+(As root user)
+
+First, uncomment a mirror
+
+# vim /etc/slackpkg/mirrors
+
+Then, initialize the database
+
+# slackpkg update gpg
+
+Then, do the regular update process
+
+# slackpkg update
+# slackpkg install-new
+# slackpkg upgrade-all
+# slackpkg clean-system
+
+
