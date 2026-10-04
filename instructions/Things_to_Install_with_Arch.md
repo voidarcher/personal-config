@@ -1,80 +1,86 @@
-Things to install with Arch:
+# Things to install with Arch:
 ----------------------------
 
-Pacstrap: 
----------
+### Pacstrap: 
+### ---------
+```sh
 pacstrap -K /mnt base base-devel linux-lts linux-lts-headers linux-firmware sof-firmware networkmanager reflector fwupd vim git intel/amd-ucode 
+```
 
 When you arch-chroot in, make sure to run:
-
+```sh
 # systemctl enable NetworkManager
 # systemctl start NetworkManager
+```
 
+### First pacman after connecting via NetworkManager:
+### -------------------------------------------------
 
-First pacman after connecting via NetworkManager:
--------------------------------------------------
-sddm 
-wget
-plasma (remove bigscreen and flatpak-kcm)
-fastfetch (maybe install this from user account to test sudo) 
-firefox 
-konsole 
-kate 
-dolphin 
-gwenview
-anki
-fcitx5-im
-fcitx5-mozc
-noto-fonts-cjk
-ttf-liberation 
-mgba-qt 
-pacman-contrib 
-man-db 
-ark 
-mpv
-emacs
-alsa-utils
+```sh
+pacman -Syu sddm wget plasma firefox konsole kate dolphin gwenview anki fcitx5-im fcitx5-mozc noto-fonts-cjk ttf-liberation mgba-qt pacman-contrib man-db ark mpv emacs alsa-utils
+```
 
-Also, remember to run:
-
+#### Also, remember to run:
+```sh
 # systemctl enable sddm
+```
 
+### Adding a user
+First, as root run:
+```sh
+# useradd -m -G wheel -s /bin/bash username
+# passwd username
+```
 
-Setting up systemd-boot:
-------------------------
+Then, give yourself sudo permissions with:
+```sh
+# EDITOR=vim visudo
+```
+Go down to the bottom and uncomment
+```sh
+# %wheel ALL=(ALL:ALL) ALL
+```
+
+### Setting up systemd-boot:
+### ------------------------
 (Note: If you're using GRUB, see Slackware_Stuff.txt)
 
-
-
-/boot/loader/loader.conf
-------------------------
+```sh
+[/boot/loader/loader.conf]
 default  arch.conf
 timeout  4
 console-mode max
 editor   no
-
-/boot/loader/entries/arch.conf
-------------------------------
+```
+```sh
+[/boot/loader/entries/arch.conf]
 title    Arch GNU/Linux (Vanilla)
 linux    /vmlinuz-linux
 initrd   /initramfs-linux.img
 initrd   /amd-ucode.img
 options  root=UUID=5ac8b344-c999-99a9-c123-22922a9bdeff rw
 sort-key 01
-
-/boot/loader/entries/arch-lts.conf
-----------------------------------
+```
+```sh
+[/boot/loader/entries/arch-lts.conf]
 title    Arch GNU/Linux (LTS)
 linux    /vmlinuz-linux-lts
 initrd   /initramfs-linux-lts.img
 initrd   /amd-ucode.img
 options  root=UUID=5ac8b344-c999-99a9-c123-22922a9bdeff rw
 sort-key 02
-
-# make sure you replace the UUID with the correct one (new one every time) 
+```
+#### make sure you replace the UUID with the correct one (new one every time) 
+```sh
+[In vim]
 :r! blkid
+```
+When you're finally booted into your system, KDE and all, try out:
+```sh
+$ sudo pacman -Syu fastfetch
+```
 
-# Written on Sunday, October 4, 2026
+### Written on Sunday, October 4, 2026
 I don't know why I don't love Arch the way I used to. Maybe I've hit the point
 where normal stuff just doesn't hit anymore, and anything familiar just feels
 insufficient. This is not an attitude I have towards anything else, where I tend
