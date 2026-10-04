@@ -38,9 +38,9 @@ Go down to the bottom and uncomment
 ```
 
 ### Setting up systemd-boot:
-(Note: If you're using GRUB, see Slackware_Stuff.txt)
-
-```sh
+(Note: If you're using GRUB, see Slackware_Stuff.txt. Also, all these UUIDs are fake. Make
+sure you get the proper ones from blkid.)
+```sh 
 [/boot/loader/loader.conf]
 default  arch.conf
 timeout  4
@@ -65,12 +65,12 @@ initrd   /amd-ucode.img
 options  root=UUID=5ac8b344-c999-99a9-c123-22922a9bdeff rw
 sort-key 02
 ```
-#### make sure you replace the UUID with the correct one (new one every time) 
+#### Make sure you replace the UUID with the correct one (new one every time) 
 ```sh
 [In vim]
 :r! blkid
 ```
-When you're finally booted into your system, KDE and all, try out:
+#### When you're finally booted into your system, KDE and all, try out:
 ```sh
 $ sudo pacman -Syu fastfetch
 ```
