@@ -25,7 +25,41 @@ When you arch-chroot in, make sure to run:
 # systemctl start NetworkManager
 ```
 
-#### First pacman after connecting via NetworkManager:
+### Setting up systemd-boot:
+(Note: If you're using GRUB, see Slackware_Stuff.txt. Also, all these UUIDs are fake. Make
+sure you get the proper ones from blkid.)
+```sh 
+[/boot/loader/loader.conf]
+default  arch.conf
+timeout  4
+console-mode max
+editor   no
+```
+```sh
+[/boot/loader/entries/arch.conf]
+title    Arch GNU/Linux (Vanilla)
+linux    /vmlinuz-linux
+initrd   /initramfs-linux.img
+initrd   /amd-ucode.img
+options  root=UUID=5ac8b344-c999-99a9-c123-22922a9bdeff rw
+sort-key 01
+```
+```sh
+[/boot/loader/entries/arch-lts.conf]
+title    Arch GNU/Linux (LTS)
+linux    /vmlinuz-linux-lts
+initrd   /initramfs-linux-lts.img
+initrd   /amd-ucode.img
+options  root=UUID=5ac8b344-c999-99a9-c123-22922a9bdeff rw
+sort-key 02
+```
+#### Make sure you replace the UUID with the correct one (new one every time) 
+```sh
+[In vim]
+:r! blkid
+```
+
+#### After the bootloader, set up the main user account. Start by installing typical applications:
 ```sh
 pacman -Syu sddm wget plasma firefox konsole kate dolphin gwenview anki fcitx5-im fcitx5-mozc noto-fonts-cjk ttf-liberation mgba-qt pacman-contrib man-db ark mpv haruna emacs alsa-utils
 ```
@@ -73,45 +107,18 @@ Go down to the bottom and uncomment
 # %wheel ALL=(ALL:ALL) ALL
 ```
 
-### Setting up systemd-boot:
-(Note: If you're using GRUB, see Slackware_Stuff.txt. Also, all these UUIDs are fake. Make
-sure you get the proper ones from blkid.)
-```sh 
-[/boot/loader/loader.conf]
-default  arch.conf
-timeout  4
-console-mode max
-editor   no
-```
-```sh
-[/boot/loader/entries/arch.conf]
-title    Arch GNU/Linux (Vanilla)
-linux    /vmlinuz-linux
-initrd   /initramfs-linux.img
-initrd   /amd-ucode.img
-options  root=UUID=5ac8b344-c999-99a9-c123-22922a9bdeff rw
-sort-key 01
-```
-```sh
-[/boot/loader/entries/arch-lts.conf]
-title    Arch GNU/Linux (LTS)
-linux    /vmlinuz-linux-lts
-initrd   /initramfs-linux-lts.img
-initrd   /amd-ucode.img
-options  root=UUID=5ac8b344-c999-99a9-c123-22922a9bdeff rw
-sort-key 02
-```
-#### Make sure you replace the UUID with the correct one (new one every time) 
-```sh
-[In vim]
-:r! blkid
-```
 #### When you're finally booted into your system, KDE and all, try out:
 ```sh
 $ sudo pacman -Syu fastfetch
 ```
 
 ## Diary ##
+
+### Written on Monday, October 5, 2026
+Whelp, I've reinstalled Arch. For whatever reason, this time around it feels like
+I'm home. Everything's very snappy. I only have the stuff that I want installed. 
+Once again, it makes me feel like a kid, when technology didn't piss me off every
+ten seconds. I have all my books and movies and everything. It's nice.
 
 ### Written on Sunday, October 4, 2026
 I don't know why I don't love Arch the way I used to. Maybe I've hit the point
