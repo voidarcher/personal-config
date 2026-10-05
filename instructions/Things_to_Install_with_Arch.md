@@ -1,8 +1,23 @@
 # Things to install with Arch
 #### Pacstrap: 
 ```sh
-pacstrap -K /mnt base base-devel linux-lts linux-lts-headers linux-firmware sof-firmware networkmanager reflector fwupd vim git intel/amd-ucode 
+pacstrap -K /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware sof-firmware networkmanager reflector fwupd vim git intel/amd-ucode 
 ```
+##### List Form
+* base
+* base-devel
+* linux
+* linux-headers
+* linux-lts
+* linux-lts-headers
+* linux-firmware
+* sof-firmware
+* networkmanager
+* reflector
+* fwupd
+* vim
+* git
+* intel/amd-ucode
 
 When you arch-chroot in, make sure to run:
 ```sh
@@ -12,8 +27,30 @@ When you arch-chroot in, make sure to run:
 
 #### First pacman after connecting via NetworkManager:
 ```sh
-pacman -Syu sddm wget plasma firefox konsole kate dolphin gwenview anki fcitx5-im fcitx5-mozc noto-fonts-cjk ttf-liberation mgba-qt pacman-contrib man-db ark mpv emacs alsa-utils
+pacman -Syu sddm wget plasma firefox konsole kate dolphin gwenview anki fcitx5-im fcitx5-mozc noto-fonts-cjk ttf-liberation mgba-qt pacman-contrib man-db ark mpv haruna emacs alsa-utils
 ```
+##### List Form
+* sddm
+* wget
+* plasma
+* firefox
+* konsole
+* kate
+* dolphin
+* gwenview
+* anki
+* fcitx5-im
+* fcitx5-mozc
+* noto-fonts-cjk
+* ttf-liberation
+* mgba-qt
+* pacman-contrib
+* man-db
+* ark
+* mpv
+* haruna
+* emacs
+* alsa-utils
 
 #### Also, remember to run:
 ```sh
