@@ -1,5 +1,18 @@
 OpenVPN HOWTO
 -------------
+Ignore everything below the dotted line and just use WireGuard instead. It
+is legitimately more usable than even the ProtonVPN GUI app, as long as
+you're trying to use the same VPN location. 
+
+$ nmcli connection import type wireguard file /path/to/wg.conf
+
+After this, it should just be in NetworkManager. Remember to set it to not
+autostart on boot. But yeah, that's it. Works perfectly.
+
+
+
+
+--------------------------------------------------------------------------
 
 1)  OpenVPN should already be installed on Slackware-current (the one
     that will eventually become Slackware 15.1 or 16.0).
