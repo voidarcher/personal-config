@@ -130,4 +130,11 @@ For upgrading, it's just the installation process, but you run
 
 instead of installpkg.
 
+Fixing Japanese Text on Firefox:
+--------------------------------
+Go to about:config
+For setting: font.cjk_pref_fallback_order
+to
+ja,zh-cn,zh-hk,zh-tw,ko (put ja first)
+
 Good luck, Slacker.
